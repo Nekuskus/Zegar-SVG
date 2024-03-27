@@ -1,0 +1,225 @@
+@font-face {
+    font-family: Digital;
+    src: url(../assets/digital-7.mono.ttf);
+}
+
+* {
+    transition: 0.5s;
+}
+
+:root { /* default: motyw cytrusowy */
+    --hands-color: rgb(255,0,0);
+    --markers-color: rgb(55,50,240);
+
+    --tarcza-bg-stroke: green;
+    --tarcza-bg-fill: rgba(198, 230, 20, 0.46);
+
+    --tarcza-fill: rgba(252,252, 29, 0.9);
+
+    --digi-border: #FAA381;
+
+    --body-bg: white;
+
+    --color: black;
+
+    --svg-width: 880px;
+
+    --skew: -6deg;
+}
+
+text {
+    fill: var(--color);
+    stroke: none;
+}
+
+#hands-of-time > line {
+    stroke: var(--hands-color);
+    stroke-width: 3;
+}
+
+#hour-markers > line, #minute-markers > line {
+    stroke: var(--markers-color);
+}
+
+#tarcza-bg {
+    stroke: var(--tarcza-bg-stroke);
+    stroke-width: 3;
+    fill: var(--tarcza-bg-fill);
+}
+
+#tarcza-kolo {
+    fill: var(--tarcza-fill); 
+}
+
+#digi-padding {
+    fill: var(--hands-color);
+    stroke: var(--digi-border);
+}
+
+#digi-border {
+    fill: none;
+    stroke: var(--digi-border);
+    stroke-width: 10px;
+}
+
+#digi-screen {
+    fill: var(--tarcza-fill);
+    outline: inset;
+}
+
+.digit_rect {
+    fill: none;
+    stroke: none;
+}
+
+.digit {
+    transform: skewX(var(--skew));
+}
+
+.segment {
+    fill: var(--color);
+}
+
+.separator-dot {
+    fill: var(--color);
+    transform: skewX(var(--skew));
+}
+
+.digi-text {
+    font-family: 'Digital';
+    font-size: calc(5em * var(--svg-width) / 880);
+    text-anchor: middle;
+    transform: skewX(var(--skew));
+}
+
+body {
+    margin: 0;
+    color: var(--color);
+    background-color: var(--body-bg);
+}
+
+.center-text {
+    text-anchor: middle;
+}
+
+.hide {
+    display: none;
+}
+
+.unhide {
+    display: unset;
+}
+
+.small-text { 
+    font-size: 1em;
+}
+
+.smaller-text { 
+    font-size: 0.5em;
+}
+
+.transform-origin {
+    transform-origin: center;
+}
+
+svg#tarcza {
+    border-radius: 0px 0px 2.5% 0px;
+}
+
+input[type="range"] {
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+datalist {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+hr#config-sep {
+    height: 100%;
+}
+
+#config-sidepanel {
+    position: absolute;
+    font-family: 'Consolas';
+    height: 0; /*868px;*/
+    width: 0; /*880px;*/
+    background-color: var(--tarcza-bg-fill);
+    display: flex;
+    
+    top: 0;
+    right: 0;
+    border-radius: 0px 0px 0px 2.5%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+#config-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    z-index: 5;
+}
+
+#config-banner {
+    height: 868px;
+    width: 120px;
+    /*border-right: 5px dashed rgb(55,50,240);*/
+    text-align: center;
+    vertical-align: middle;
+    font-size: 7.5em;
+    /*font-weight: bold;*/
+}
+
+#config-panel {
+    height: 215px;
+    width: calc(880px - 120px - 2*(15px));
+    font-size: 1em;
+    padding: 15px;
+}
+
+#config-panel > hr {
+    width: 90%;
+    border-color: rgba(55,50,240, 0.6);
+}
+
+.panel-section {
+    display: flex;
+    padding: 5px;
+}
+
+.panel-entry {
+    width: 50%;
+    padding: 5px;
+}
+
+text {
+    font-size: 2em;
+}
+
+.alarm-entry {
+    width: 50%;
+}
+
+.alarm-entry::before {
+    content: "❌";
+}
+
+#alarm-panel-entry {
+    width: 100%;
+    padding: 5px;
+}
+
+#alarm-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}

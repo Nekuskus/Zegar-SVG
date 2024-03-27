@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zegar</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <button id="config-btn" onclick="toggleConfig()">Ustawienia &#9776;</button>
+    <div id="config-sidepanel">
+        <div id="config-banner">C<br>O<br>N<br>F<br>I<br>G</div>
+        <hr id="config-sep">
+        <div id="config-panel">
+            <form id="config-form">
+                <div class="panel-section">
+                    <div class="panel-entry">
+                        <h2>Typ</h2>
+                        <input type="range" name="clocktype" id="clocktype" list="clocktypes" value="0" min="0" max="1">
+                        <datalist id="clocktypes">
+                            <option value="0" label="analog"></option>
+                            <option value="1" label="digital"></option>
+                        </datalist>
+                    </div>
+                    <div class="panel-entry">
+                        <h2>Wewnętrzne</h2>
+                        <fieldset>
+                            <legend>Dekoracje</legend>
+                            <input type="checkbox" name="godziny" value="godziny" checked>Godziny (<input type="checkbox" name="inner" checked>inner)<br>
+                            <input type="checkbox" name="minuty" value="minuty" checked>Minuty (<input type="checkbox" name="minuty5" value="minuty5" checked>5' inkr)<br>
+                            <input type="checkbox" name="sekundy" value="sekundy">Sekundy<br>
+                            <input type="checkbox" name="logo" value="logo" checked>Logo<br>
+                        </fieldset>
+                    </div>
+                </div>
+                <hr>
+                <div class="panel-section">
+                    <div class="panel-entry">
+                        <h2>Cyfry</h2>
+                        <input type="range" name="labeltype" id="labeltype" list="labeltypes" min="0" max="2" value="0">
+                        <datalist id="labeltypes">
+                            <option value="0" label="arabskie"></option>
+                            <option value="1" label="rzymskie"></option>
+                            <option value="2" label="brak"></option>
+                        </datalist>
+                    </div>
+                    <div class="panel-entry">
+                        <h2>Color scheme</h2>
+                        <input type="range" name="theme" id="theme" list="themes" min="0" max="4" value="1">
+                        <datalist id="themes">
+                            <option value="0" label="ametyst"></option>
+                            <option value="1" label="beżowy"></option>
+                            <option value="2" label="cytrusowy"></option>
+                            <option value="3" label="morski"></option>
+                            <option value="4" label="truskakowy"></option>
+                        </datalist>
+                    </div>
+                </div>
+                <hr>
+                <div class="panel-section">
+                    <div id='alarm-panel-entry'>
+                        <div style="display: flex; align-items: center;">
+                            <h2>Alarm</h2>
+                            <input type="number" style="margin-left: 15px; height: 2em;" name="newhour" id="hour-new" min="0" max="23" step="1" value="0" size="3">
+                            :
+                            <input type="number" style="height: 2em; margin-right: 15px;" name="newmin" id="min-new" min="0" max="59" step="1" value="0" size="3"> 
+                            <select name="alarmpath">
+                                <option value="../assets/alarm_clock.mp3">Szkolny</option>
+                                <option value="../assets/best_alarm.mp3" selected>Melodyczny</option>
+                                <option value="../assets/loudalarm.mp3">Syrena</option>
+                                <option value="../assets/myalarm.mp3">Digital</option>
+                                <option value="../assets/rain_alarm.mp3">Deszczowy</option>
+                                <option value="../assets/red_yippee_1_.mp3">Red</option>
+                            </select>
+                            <input type="button" name="addalarm" value="Dodaj alarm.">
+                        </div>
+                        <div id='alarm-wrapper'>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <svg id="tarcza" height="880" width="880"></svg>
+    <dialog id="alarm-dialog">
+        <p>Alarm! <span id="hrs-span">00</span>:<span id="mins-span">00</span></p>
+        <form method="dialog">
+            <button onclick="endAlarm()">Zakończ</button>
+        </form>
+    </dialog>
+</body>
+
+</html>
